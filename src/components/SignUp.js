@@ -1,73 +1,55 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {addUser } from "../utils/userData";
 import './SignUp.css';
-
-const SignUp = () => {
+const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleSignUp = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
-      setErrorMessage('Please fill out both fields');
-      return;
+    if (addUser(email, password)) {
+      setMessage('Account created successfully!');
+      setTimeout(() => {
+        navigate('/login');
+      }, 2000);
+    } else {
+      setMessage('Error creating account. Please try again.');
     }
-
-    // Store email and password in localStorage
-    const users = JSON.parse(localStorage.getItem('users')) || {};
-    if (users[email]) {
-      setErrorMessage('Email already exists. Please log in.');
-      return;
-    }
-
-    users[email] = password;
-    localStorage.setItem('users', JSON.stringify(users));
-
-    setErrorMessage('');
-    setSuccessMessage('Sign-Up Successful! Redirecting to Login...');
-    
-    // Redirect to Login page after 2 seconds
-    setTimeout(() => {
-      navigate('/login');
-    }, 2000);
   };
 
   return (
     <div className="signup-container">
       <div className="signup-box">
-        <h2 className="signup-title">Sign Up</h2>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-        {successMessage && <p className="success-message">{successMessage}</p>}
-        <form onSubmit={handleSignUp}>
-          <div className="form-group">
-            <label>Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="input-field"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="input-field"
-              required
-            />
-          </div>
-          <button type="submit" className="signup-button">Sign Up</button>
+        <form onSubmit={handleSignup}>
+          <h2 className="signup-title">Sign Up</h2>
+          {message && <p className="success-message">{message}</p>}
+          <label>Email</label>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="input-field"
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="input-field"
+          />
+          <button className="signup-button" type="submit">Sign Up</button>
         </form>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default Signup;

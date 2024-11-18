@@ -1,21 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const MyWork = () => {
-  const [balance, setBalance] = useState(500); // Default balance
+  const loggedInUser = localStorage.getItem('loggedInUser'); // Retrieve logged-in user's email
+  const [balance, setBalance] = useState(0); // Default balance
   const [amount, setAmount] = useState('');
   const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    // Load user data from localStorage
+    const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
+    setBalance(userData.balance || 0);
+    setTransactions(userData.transactions || []);
+  }, [loggedInUser]);
 
   const handleRecharge = (e) => {
     e.preventDefault();
     const rechargeAmount = parseFloat(amount);
 
     if (rechargeAmount > 0) {
-      setBalance(balance + rechargeAmount);
-      setTransactions([
+      const newBalance = balance + rechargeAmount;
+      const newTransactions = [
         ...transactions,
         { type: 'Recharge', amount: rechargeAmount, date: new Date().toLocaleString() },
-      ]);
+      ];
+
+      setBalance(newBalance);
+      setTransactions(newTransactions);
       setAmount('');
+
+      // Update localStorage
+      localStorage.setItem(
+        loggedInUser,
+        JSON.stringify({ balance: newBalance, transactions: newTransactions })
+      );
     } else {
       alert('Please enter a valid amount');
     }

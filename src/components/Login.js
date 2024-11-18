@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getUsers} from "../utils/userData"; 
 import './Login.css';
 
 const Login = () => {
@@ -11,8 +12,8 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Retrieve users from localStorage
-    const users = JSON.parse(localStorage.getItem('users')) || {};
+    // Retrieve users from the utility
+    const users = getUsers();
 
     if (users[email] && users[email] === password) {
       localStorage.setItem('isAuthenticated', 'true');

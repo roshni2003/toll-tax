@@ -1,14 +1,19 @@
-// src/pages/TollCollection.js
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const TollCollection = () => {
-  const [accountBalance, setAccountBalance] = useState(1000); // Mock balance
-  const [tollAmount, setTollAmount] = useState(0); // Initialize toll amount as 0
+  const loggedInUser = localStorage.getItem('loggedInUser'); // Retrieve logged-in user's email
+  const [accountBalance, setAccountBalance] = useState(0); // User's account balance
+  const [tollAmount, setTollAmount] = useState(0); // Toll tax amount
   const [manualPayment, setManualPayment] = useState('');
   const [receipt, setReceipt] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
-  const [adminTollTax, setAdminTollTax] = useState(''); // State for admin to set toll
+  const [adminTollTax, setAdminTollTax] = useState('');
+
+  useEffect(() => {
+    // Load user data from localStorage
+    const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
+    setAccountBalance(userData.balance || 0);
+  }, [loggedInUser]);
 
   const handleSetTollTax = () => {
     const toll = parseFloat(adminTollTax);
@@ -28,9 +33,20 @@ const TollCollection = () => {
     }
 
     if (accountBalance >= tollAmount) {
-      setAccountBalance(accountBalance - tollAmount);
+      const newBalance = accountBalance - tollAmount;
+
+      setAccountBalance(newBalance);
       generateReceipt('Automatic Deduction');
       setErrorMessage('');
+
+      // Update localStorage
+      const userData = JSON.parse(localStorage.getItem(loggedInUser)) || {};
+      userData.balance = newBalance;
+      userData.transactions = [
+        ...(userData.transactions || []),
+        { type: 'Toll Deduction', amount: tollAmount, date: new Date().toLocaleString() },
+      ];
+      localStorage.setItem(loggedInUser, JSON.stringify(userData));
     } else {
       setErrorMessage('Insufficient balance for automatic deduction.');
     }
@@ -70,9 +86,7 @@ const TollCollection = () => {
           onChange={(e) => setAdminTollTax(e.target.value)}
           className="input-field"
         />
-        <button onClick={handleSetTollTax} className="set-toll-button">
-          Set Toll Tax
-        </button>
+        <button onClick={handleSetTollTax} className="set-toll-button">Set Toll Tax</button>
       </div>
 
       {/* Display Current Toll */}
@@ -81,9 +95,7 @@ const TollCollection = () => {
       {/* Automatic Deduction Section */}
       <div className="account-section">
         <p><strong>Account Balance:</strong> ₹{accountBalance.toFixed(2)}</p>
-        <button onClick={handleAutoDeduction} className="auto-deduction-button">
-          Deduct Automatically
-        </button>
+        <button onClick={handleAutoDeduction} className="auto-deduction-button">Deduct Automatically</button>
       </div>
 
       {/* Manual Payment Section */}
@@ -95,17 +107,16 @@ const TollCollection = () => {
           value={manualPayment}
           onChange={(e) => setManualPayment(e.target.value)}
           className="input-field"
+
         />
-        <button onClick={handleManualPayment} className="manual-payment-button">
-          Pay Manually
-        </button>
+        <button onClick={handleManualPayment} className="manual-payment-button">Pay Manually</button>
       </div>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       {/* Receipt Section */}
       {receipt && (
-        <div className="receipt-section">
+        <div className="error-message">
           <h3>Digital Receipt</h3>
           <p><strong>Date:</strong> {receipt.date}</p>
           <p><strong>Amount Paid:</strong> ₹{receipt.tollAmount.toFixed(2)}</p>
