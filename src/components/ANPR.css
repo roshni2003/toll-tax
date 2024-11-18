@@ -1,0 +1,34 @@
+.anpr-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .anpr-container h2 {
+    color: #007bff;
+  }
+  
+  .anpr-container input {
+    margin: 10px 0;
+  }
+  
+  .uploaded-image {
+    margin-top: 10px;
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .vehicle-info {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 16px;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  

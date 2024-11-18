@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './components/Home'; // Import the Home component
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import MyWork from './components/MyWork'; // New page
+import VehicleIdentification from './components/VehicleIdentification';
+import TollCollection from './components/TollCollection';
+import AdminDashboard from './components/AdminDashboard';
+import './styles.css';
+
+const App = () => {
+    return (
+        <Router>
+            <div>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<Home />} /> {/* Home route */}
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/my-work" element={<MyWork />} /> {/* New route */}
+                    <Route path="/vehicle-identification" element={<VehicleIdentification />} />
+                    <Route path="/toll-collection" element={<TollCollection />} />
+                    <Route path="/admin-dashboard" element={<AdminDashboard />} />
+                </Routes>
+            </div>
+        </Router>
+    );
+};
 
 export default App;

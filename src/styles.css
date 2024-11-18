@@ -1,0 +1,581 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #034881;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.header nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+h2 {
+    color: #333;
+}
+.headtxt {
+    background: none;
+    border: none;
+    color: rgb(230, 230, 243);
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none; /* Removes the underline */
+}
+
+.headtxt:hover {
+    color: red;
+}
+
+.arrival-departure-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+.container{
+    padding: 20px;
+}
+.heading{
+    font-size: 30px;
+    text-align: center;
+}
+.subheadings{
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+    bottom: 40px;
+}
+.outer-box {
+    flex: 1; /* Ensures equal width for both boxes */
+    height: 450px;
+    padding: 20px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.arrival-container {
+    border: 2px solid #f7c756;
+    animation: borderPulseArrival 2s infinite;
+}
+
+.departure-container {
+    border: 2px solid #3590db;
+    animation: borderPulseDeparture 2s infinite;
+}
+
+.inner-box {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.arrival-inner-box {
+    border: 2px solid #3590db;
+    background-color: #f7c756;
+}
+
+.departure-inner-box {
+    border: 2px solid #f7c756;
+    background-color: #3590db;
+}
+
+.body-text {
+    margin: 0;
+    padding: 0;
+    list-style-type: disc;
+    text-align: left;
+    font-size: 18px;
+}
+
+.body-text li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.body-text p {
+    margin: 0;
+    line-height: 1.5;
+    color: #555;
+}
+.line{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+
+}
+.subheading {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@keyframes borderPulseArrival {
+    0% {
+        border-color: #f7c756;
+    }
+    50% {
+        border-color: #f7c756;
+        box-shadow: 0 0 15px #f7c756;
+    }
+    100% {
+        border-color: #f7c756;
+    }
+}
+
+@keyframes borderPulseDeparture {
+    0% {
+        border-color: #3590db;
+    }
+    50% {
+        border-color: #3590db;
+        box-shadow: 0 0 15px #3590db;
+    }
+    100% {
+        border-color: #3590db;
+    }
+}
+
+@media (max-width: 768px) {
+    .arrival-departure-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .outer-box {
+        height: auto; /* Adjust height for smaller screens */
+    }
+}
+ 
+section {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #03060a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* src/styles.css */
+
+.vehicle-identification {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+.vehicle-identification input {
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.vehicle-identification button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* src/styles.css */
+
+.home {
+    padding: 20px;
+    text-align: center;
+}
+
+.home h2 {
+    margin-bottom: 20px;
+}
+.logout-button {
+    background: none;
+    border: none;
+    color: rgb(230, 230, 243);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.logout-button:hover {
+    color: red;
+}
+.my-work-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .balance-section {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  h3 {
+    color: #007bff;
+  }
+  
+  .recharge-form {
+    margin-top: 10px;
+  }
+  
+  .recharge-form input {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .recharge-form button {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .recharge-form button:hover {
+    background-color: #218838;
+  }
+  
+  .transaction-history ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .transaction-history li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .transaction-history li span {
+    font-weight: bold;
+    color: #007bff;
+  }
+  .toll-collection-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .toll-collection-container h1 {
+    color: #007bff;
+  }
+  
+  .account-section,
+  .manual-payment-section {
+    margin: 20px 0;
+  }
+  
+  .auto-deduction-button,
+  .manual-payment-button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .auto-deduction-button:hover,
+  .manual-payment-button:hover {
+    background-color: #218838;
+  }
+  
+  .input-field {
+    padding: 8px;
+    width: 80%;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .receipt-section {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    background-color: #e9f5ff;
+    text-align: left;
+  }
+  /* AdminDashboard.css */
+.admin-dashboard {
+    padding: 20px;
+  }
+  
+  .admin-dashboard h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .admin-dashboard section {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .admin-dashboard table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+  }
+  
+  .admin-dashboard table th, .admin-dashboard table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .admin-dashboard button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  /* System Settings Container */
+.system-settings-container {
+    padding: 20px;
+    margin: 20px;
+    background-color: #f4f6f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Titles */
+.settings-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Input Fields and Labels */
+.setting-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.setting-item label {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.setting-item input,
+.setting-item select,
+.setting-item .time-picker {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.setting-item input:focus,
+.setting-item select:focus {
+    border-color: #007bff;
+}
+
+/* Save and Reset Buttons */
+.setting-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.setting-buttons button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.setting-buttons button:hover {
+    background-color: #218838;
+}
+
+/* Alert and Notifications */
+.notification {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #28a745;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.notification.error {
+    background-color: #dc3545;
+}
+
+.notification.success {
+    background-color: #28a745;
+}
+
+  .overview-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stat-item {
+    width: 22%;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item h3 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.stat-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.alerts, .recent-activities {
+    margin-top: 20px;
+}
+
+.alerts h3, .recent-activities h3 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.alerts p, .recent-activities p {
+    font-size: 1rem;
+    color: #555;
+}
+/* Role Management Page Container */
+.role-management-container {
+    padding: 20px;
+    margin: 20px;
+    background-color: #f4f6f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.role-management-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Container */
+.role-management-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Label */
+.role-management-form label {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Dropdown (select) */
+.role-management-form select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.role-management-form select:focus {
+    border-color: #007bff;
+}
+
+/* Button */
+.role-management-form button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.role-management-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Notification/Success Message */
+.notification {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #28a745;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.notification.error {
+    background-color: #dc3545;
+}
